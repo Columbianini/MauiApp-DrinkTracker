@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:DrinkDrink.Model"
+             xmlns:viewmodel="clr-namespace:DrinkDrink.ViewModel"
+             x:DataType="viewmodel:TodayDrinkViewModel"
+             x:Class="DrinkDrink.View.HistoryPage"
+             Title="HistoryPage">
+    <Grid ColumnDefinitions="*,*"
+          RowDefinitions="*,Auto">
+        <CollectionView Background="Transparent" ItemsSource="{Binding CupCounters}"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:CupCounter">
+                    <Grid Padding="10">
+                        <Frame HeightRequest="125" Padding="0" Style="{StaticResource CardView}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                        CommandParameter="{Binding .}" 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TodayDrinkViewModel}}, Path=GoToDetailsCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <HorizontalStackLayout Spacing="5" Padding="10">
+                                <Label Text="{Binding Date}" Style="{StaticResource LargeLabel}"/>
+                                <Label Text="{Binding Count}" Style="{StaticResource  MediumLabel}"/>
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Text="Refresh" Grid.Row="1" Grid.ColumnSpan="2" Margin="8"
+            Style="{StaticResource ButtonOutline}"
+            Command="{Binding GetHistoricalSummaryCommand}" 
+            IsEnabled="{Binding IsNotBusy}"/>
+    </Grid>
+</ContentPage>
