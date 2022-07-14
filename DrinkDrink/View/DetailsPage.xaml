@@ -11,9 +11,9 @@
             <DataTemplate x:DataType="model:Cup">
                 <HorizontalStackLayout>
                     <Label Text="{Binding Id, StringFormat='Cup {0}: '}"/>
-                    <Label Text="{Binding StartDrinkTime}"/>
+                    <Label Text="{Binding StartDrinkTime, StringFormat='{0:HH:mm:ss}'}"/>
                     <Label Text="~"/>
-                    <Label Text="{Binding FinishDrinkTime}"/>
+                    <Label Text="{Binding FinishDrinkTime, StringFormat='{0:HH:mm:ss}'}"/>
                 </HorizontalStackLayout>
             </DataTemplate>
         </CollectionView.ItemTemplate>

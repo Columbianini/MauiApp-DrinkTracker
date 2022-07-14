@@ -44,7 +44,7 @@ namespace DrinkDrink.ViewModel
                 return;
             if (CupOnHand == 0)
             {
-                await Shell.Current.DisplayAlert("Warning", "You should first start to drink", "ok");
+                await Shell.Current.DisplayAlert("Warning", "Cheating! You should fill your bottle first", "ok");
                 return;
             }
             try
