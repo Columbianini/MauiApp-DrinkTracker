@@ -8,6 +8,7 @@ namespace DrinkDrink.Model
 {
     public class Cup
     {
+        public int Id { get; set; }
         private bool isFinished;
         private DateTime finishedDrinkTime;
         public bool IsFinished { get { return isFinished; } set { isFinished = value; } }

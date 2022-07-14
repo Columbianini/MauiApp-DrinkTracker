@@ -130,10 +130,20 @@ namespace DrinkDrink.ViewModel
             if (counter is null)
                 return;
 
+            List<Cup> cups = Cups.
+                Where(cup => counter.Date == DateOnly.FromDateTime(cup.StartDrinkTime)).
+                Select(cup => new Cup() { StartDrinkTime = cup.StartDrinkTime, FinishDrinkTime = cup.FinishDrinkTime }).ToList();
+            int i = 1;
+            foreach (var cup in cups)
+            {
+                cup.Id = i;
+                i++;
+            }
+
 
             await Shell.Current.GoToAsync(nameof(DetailsPage), true, new Dictionary<string, object>
             {
-                {"Counter", counter }
+                {"Cups", cups }
             });
         }
 

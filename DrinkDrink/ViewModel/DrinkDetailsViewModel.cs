@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace DrinkDrink.ViewModel
 {
-    [QueryProperty("Counter", "Counter")]
+    [QueryProperty("Cups", "Cups")]
     public partial class DrinkDetailsViewModel: BaseViewModel
     {
         [ObservableProperty]
-        CupCounter counter;
+        List<Cup> cups;
     }
 }
