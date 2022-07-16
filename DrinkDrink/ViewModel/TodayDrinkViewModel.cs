@@ -78,7 +78,8 @@ namespace DrinkDrink.ViewModel
             {
                 IsBusy = false;
                 CupOnHand = 0;
-                NumberOfCups = Cups.Count;
+                //NumberOfCups = Cups.Count;
+                NumberOfCups = Cups.Where(s => s.StartDrinkTime.Date == DateTime.Now.Date).Count();
             }
             
         }
@@ -106,8 +107,9 @@ namespace DrinkDrink.ViewModel
             {
                 IsBusy = false;
                 CupOnHand = 0;
-                NumberOfCups = Cups.Count;
-            }   
+                //NumberOfCups = Cups.Count;
+                NumberOfCups = Cups.Where(s => s.StartDrinkTime.Date == DateTime.Now.Date).Count();
+            }
         }
 
         [RelayCommand]

@@ -21,7 +21,7 @@ namespace DrinkDrink.Services
             //    return cupList;
             if (!File.Exists(db_path))
             {
-                await Shell.Current.DisplayAlert("Welcome🙌", "Please start your first cup by Fill and Drink 😊", "Acknowledged");
+                //await Shell.Current.DisplayAlert("Welcome🙌", "Please start your first cup by Fill and Drink 😊", "Acknowledged");
                 return cupList;
             }          
             var contents = await File.ReadAllTextAsync(db_path);
