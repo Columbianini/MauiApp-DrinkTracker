@@ -4,21 +4,15 @@
              xmlns:viewmodel="clr-namespace:DrinkDrink.ViewModel"
              x:DataType="viewmodel:TodayDrinkViewModel"
              x:Class="DrinkDrink.View.MainPage"
-             Title="DrinkDrink">
+             Title="{Binding TitleBasedOnCups}">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="REFRESH" Command="{Binding GetAllHistoryCommand}"/>
     </ContentPage.ToolbarItems>
-    
-    
+
+
     <Grid RowDefinitions="*,Auto">
-        <VerticalStackLayout Spacing="5" 
-                             Grid.Row="0"  
-                             HorizontalOptions="Center"
-                             VerticalOptions="Center">
-            <Label Text="{Binding NumberOfCups, StringFormat='You have drunk {0} Cup of water'}"/>
-            <Label Text="{Binding CupOnHand, StringFormat='Currently you have {0} Cup on hand'}"/>
-        </VerticalStackLayout>
+        <Label Text="{Binding NumberOfCups}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="80" FontFamily="MrsSaintDelafield"/>
         <ImageButton Grid.Row="1" Source="{Binding ToggleButtonImage}"
                 HeightRequest="160"
                 WidthRequest="160"

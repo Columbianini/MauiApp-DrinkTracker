@@ -16,6 +16,7 @@ namespace DrinkDrink.ViewModel
         public ObservableCollection<Cup> Cups { get; set; } = new();
 
         [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(TitleBasedOnCups))]
         public int numberOfCups;
 
         [ObservableProperty]
@@ -23,9 +24,19 @@ namespace DrinkDrink.ViewModel
         [NotifyPropertyChangedFor(nameof(ToggleButtonCommand))]
         public int cupOnHand;
 
-        public IRelayCommand ToggleButtonCommand => CupOnHand == 0 ? StartDrinkCommand : FinishDrinkCommand;
 
-        public string ToggleButtonImage => CupOnHand == 0 ? "emptybottle.png" : "fullbottle.png"; 
+        // Property for MainPage
+        public IRelayCommand ToggleButtonCommand => CupOnHand == 0 ? StartDrinkCommand : FinishDrinkCommand;
+        public string ToggleButtonImage => CupOnHand == 0 ? "emptybottle.png" : "fullbottle.png";
+        public string TitleBasedOnCups => NumberOfCups switch
+        {
+            < 8 => "Drink More 😒",
+            8 => "Goal Achieved 🙌",
+            > 8 and <= 10 => "Awesome 😘",
+            > 10 => "No Cheat 😉"
+        };
+
+
 
         public TodayDrinkViewModel(DrinkIOService drinkIOService)
         {
