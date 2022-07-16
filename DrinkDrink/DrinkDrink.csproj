@@ -53,6 +53,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\AppIcon\drinkwater.svg" />
 	  <None Remove="Resources\Images\notes.png" />
 	  <None Remove="Resources\Images\water.png" />
 	</ItemGroup>

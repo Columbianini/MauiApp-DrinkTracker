@@ -99,7 +99,7 @@ namespace DrinkDrink.ViewModel
         {
             if (CupCounters.Count > 0)
             {
-                return;
+                CupCounters.Clear();
             }
             try
             {
