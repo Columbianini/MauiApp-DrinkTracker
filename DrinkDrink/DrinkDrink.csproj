@@ -54,12 +54,14 @@
 	<ItemGroup>
 	  <None Remove="Resources\AppIcon\appicon.svg" />
 	  <None Remove="Resources\AppIcon\drinkwater.svg" />
+	  <None Remove="Resources\Images\emptybottle.png" />
+	  <None Remove="Resources\Images\fullbottle.png" />
 	  <None Remove="Resources\Images\notes.png" />
 	  <None Remove="Resources\Images\water.png" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfore.svg"/>
+	  <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfore.svg" />
 	</ItemGroup>
 
 	<ItemGroup>

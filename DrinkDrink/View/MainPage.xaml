@@ -6,6 +6,11 @@
              x:Class="DrinkDrink.View.MainPage"
              Title="DrinkDrink">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="REFRESH" Command="{Binding GetAllHistoryCommand}"/>
+    </ContentPage.ToolbarItems>
+    
+    
     <Grid RowDefinitions="*,Auto">
         <VerticalStackLayout Spacing="5" 
                              Grid.Row="0"  
@@ -14,9 +19,9 @@
             <Label Text="{Binding NumberOfCups, StringFormat='You have drunk {0} Cup of water'}"/>
             <Label Text="{Binding CupOnHand, StringFormat='Currently you have {0} Cup on hand'}"/>
         </VerticalStackLayout>
-        <HorizontalStackLayout Spacing="5" Grid.Row="1"
-                               HorizontalOptions="Center">
-            <Button Text="LoadData"
+        <!--<HorizontalStackLayout Spacing="5" Grid.Row="1"
+                               HorizontalOptions="Center">-->
+            <!--<Button Text="LoadData"
                     Command="{Binding GetAllHistoryCommand}"
                     IsEnabled="{Binding IsNotBusy}"/>
             <Button Text="Fill"
@@ -24,8 +29,21 @@
                     IsEnabled="{Binding IsNotBusy}"/>
             <Button Text="Drink"
                     Command="{Binding FinishDrinkCommand}"
-                    IsEnabled="{Binding IsNotBusy}"/>
-        </HorizontalStackLayout>
+                    IsEnabled="{Binding IsNotBusy}"/>-->
+        <ImageButton Grid.Row="1" Source="{Binding ToggleButtonImage}"
+                HeightRequest="80"
+                WidthRequest="80"
+                CornerRadius="80"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Aspect="AspectFill"
+                BorderColor="Transparent"
+                Padding="0" 
+                Margin="0,0,0,30"
+                Command="{Binding ToggleButtonCommand}"
+                x:Name="ToggleButton"
+                IsEnabled="{Binding IsNotBusy}"/>
+        <!--</HorizontalStackLayout>-->
         <ActivityIndicator IsVisible="{Binding IsBusy}" 
                         IsRunning="{Binding IsBusy}" 
                         HorizontalOptions="FillAndExpand"

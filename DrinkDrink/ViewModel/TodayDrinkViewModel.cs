@@ -19,8 +19,13 @@ namespace DrinkDrink.ViewModel
         public int numberOfCups;
 
         [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(ToggleButtonImage))]
+        [NotifyPropertyChangedFor(nameof(ToggleButtonCommand))]
         public int cupOnHand;
 
+        public IRelayCommand ToggleButtonCommand => CupOnHand == 0 ? StartDrinkCommand : FinishDrinkCommand;
+
+        public string ToggleButtonImage => CupOnHand == 0 ? "emptybottle.png" : "fullbottle.png"; 
 
         public TodayDrinkViewModel(DrinkIOService drinkIOService)
         {
