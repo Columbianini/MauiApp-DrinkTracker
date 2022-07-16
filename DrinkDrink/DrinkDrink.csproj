@@ -36,7 +36,6 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
@@ -53,9 +52,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\AppIcon\appicon.svg" />
 	  <None Remove="Resources\AppIcon\drinkwater.svg" />
 	  <None Remove="Resources\Images\notes.png" />
 	  <None Remove="Resources\Images\water.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfore.svg"/>
 	</ItemGroup>
 
 	<ItemGroup>
