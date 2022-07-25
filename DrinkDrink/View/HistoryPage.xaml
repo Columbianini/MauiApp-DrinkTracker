@@ -9,19 +9,21 @@
     <Grid ColumnDefinitions="*,*"
           RowDefinitions="*,Auto">
         <CollectionView Background="Transparent" ItemsSource="{Binding CupCounters}"
-                        SelectionMode="None">
+                        SelectionMode="None"
+                        Grid.ColumnSpan="2">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:CupCounter">
-                    <Grid Padding="10">
-                        <Frame HeightRequest="125" Padding="0" Style="{StaticResource CardView}">
+                    <Grid Padding="10" VerticalOptions="Center">
+                        <Frame HeightRequest="100" Padding="0" VerticalOptions="Center">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer 
                                         CommandParameter="{Binding .}" 
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TodayDrinkViewModel}}, Path=GoToDetailsCommand}"/>
                             </Frame.GestureRecognizers>
-                            <HorizontalStackLayout Spacing="5" Padding="10">
-                                <Label Text="{Binding Date}" Style="{StaticResource LargeLabel}"/>
-                                <Label Text="{Binding Count}" Style="{StaticResource  MediumLabel}"/>
+                            <HorizontalStackLayout Spacing="5" VerticalOptions="Center" Padding="10">
+                                <Label Text="{Binding Date, StringFormat='{0: MMM dd, ddd}'}" Style="{StaticResource LargeLabel}" Margin="0,0,100,0"/>
+                                <Label Text="{Binding Rating}" Style="{StaticResource LargeLabel}"/>
+                                <Label Text="{Binding Count}" Style="{StaticResource LargeLabel}"/>
                             </HorizontalStackLayout>
                         </Frame>
                     </Grid>

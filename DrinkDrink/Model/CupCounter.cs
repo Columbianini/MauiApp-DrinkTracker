@@ -11,10 +11,17 @@ namespace DrinkDrink.Model
         public int Count { get; set; }
         public DateOnly Date { get; set; }
 
+        public string Rating { get; set; }
+
         public CupCounter(int count, DateOnly date)
         {
             Count = count;
             Date = date;
+            Rating = Count switch
+            {
+                >= 8 => "👍",
+                _ => "👎"
+            };
         }
     }
 }

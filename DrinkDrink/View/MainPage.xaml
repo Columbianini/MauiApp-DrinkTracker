@@ -12,7 +12,7 @@
 
 
     <Grid RowDefinitions="*,Auto">
-        <Label Text="{Binding NumberOfCups}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="80" FontFamily="MrsSaintDelafield"/>
+        <Label Grid.Row="0" Text="{Binding NumberOfCups}" MaxLines="1" LineBreakMode="NoWrap" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  CharacterSpacing="0" FontSize="80" FontFamily="MrsSaintDelafield"/>
         <ImageButton Grid.Row="1" Source="{Binding ToggleButtonImage}"
                 HeightRequest="160"
                 WidthRequest="160"

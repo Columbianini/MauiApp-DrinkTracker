@@ -148,7 +148,7 @@ namespace DrinkDrink.ViewModel
 
             List<Cup> cups = Cups.
                 Where(cup => counter.Date == DateOnly.FromDateTime(cup.StartDrinkTime)).
-                Select(cup => new Cup() { StartDrinkTime = cup.StartDrinkTime, FinishDrinkTime = cup.FinishDrinkTime }).ToList();
+                Select(cup => new Cup() { StartDrinkTime = cup.StartDrinkTime, FinishDrinkTime = cup.FinishDrinkTime}).ToList();
             int i = 1;
             foreach (var cup in cups)
             {
