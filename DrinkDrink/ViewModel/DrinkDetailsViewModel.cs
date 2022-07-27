@@ -8,10 +8,13 @@ using System.Threading.Tasks;
 namespace DrinkDrink.ViewModel
 {
     [QueryProperty("Cups", "Cups")]
+    [QueryProperty("TotalDrinkSecondsSeries", "TotalDrinkSecondsSeries")]
     public partial class DrinkDetailsViewModel: BaseViewModel
     {
         [ObservableProperty]
         List<Cup> cups;
+        [ObservableProperty]
+        ISeries[] totalDrinkSecondsSeries;
     }
 }
 

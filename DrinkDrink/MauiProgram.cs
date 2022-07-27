@@ -1,11 +1,14 @@
 ﻿namespace DrinkDrink;
-
+using SkiaSharp.Views.Maui.Controls.Hosting;
 public static class MauiProgram
 {
+	
+
 	public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
 		builder
+			.UseSkiaSharp(true)
 			.UseMauiApp<App>()
 			.ConfigureFonts(fonts =>
 			{

@@ -5,8 +5,15 @@
              xmlns:model="clr-namespace:DrinkDrink.Model"
              x:Class="DrinkDrink.View.DetailsPage"
              x:DataType="viewmodel:DrinkDetailsViewModel"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
              Title="DetailsPage">
-    <CollectionView Background="Transparent" ItemsSource="{Binding Cups}" SelectionMode="None">
+    <Grid Margin="5,5,5,5">
+        <lvc:CartesianChart
+                Series="{Binding TotalDrinkSecondsSeries}" 
+        >
+        </lvc:CartesianChart>
+    </Grid>
+    <!--<CollectionView Background="Transparent" ItemsSource="{Binding Cups}" SelectionMode="None">
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="model:Cup">
                 <HorizontalStackLayout>
@@ -17,5 +24,5 @@
                 </HorizontalStackLayout>
             </DataTemplate>
         </CollectionView.ItemTemplate>
-    </CollectionView>
+    </CollectionView>-->
 </ContentPage>

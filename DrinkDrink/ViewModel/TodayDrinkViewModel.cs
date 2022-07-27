@@ -1,4 +1,6 @@
 ﻿using DrinkDrink.Services;
+using LiveChartsCore.SkiaSharpView.Painting;
+using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -148,7 +150,15 @@ namespace DrinkDrink.ViewModel
 
             List<Cup> cups = Cups.
                 Where(cup => counter.Date == DateOnly.FromDateTime(cup.StartDrinkTime)).
-                Select(cup => new Cup() { StartDrinkTime = cup.StartDrinkTime, FinishDrinkTime = cup.FinishDrinkTime}).ToList();
+                OrderBy(s => s.StartDrinkTime).
+                Select(cup => new Cup() 
+                    { 
+                        StartDrinkTime = cup.StartDrinkTime, 
+                        FinishDrinkTime = cup.FinishDrinkTime, 
+                        TotalDrinkSeconds=(cup.FinishDrinkTime-cup.StartDrinkTime).TotalSeconds
+                    }).
+                ToList();
+            
             int i = 1;
             foreach (var cup in cups)
             {
@@ -156,10 +166,29 @@ namespace DrinkDrink.ViewModel
                 i++;
             }
 
+            ISeries[] totalDrinkSecondsSeries = new ISeries[]
+            {
+                new LineSeries<Cup>
+                {
+                    Name = "Total Drink Seconds",
+                    //TooltipLabelFormatter = point  => $"StartTime: {point.Model.StartDrinkTime:HH:mm:ss}",
+                    DataLabelsSize = 15,
+                    DataLabelsPaint = new SolidColorPaint(SKColors.Blue),
+                    DataLabelsPosition = LiveChartsCore.Measure.DataLabelsPosition.Top,
+                    DataLabelsFormatter = point  => $"StartTime: {point.Model.StartDrinkTime:HH:mm:ss}",
+                    Values = cups.ToArray(),
+                    Mapping = (cup, point) =>
+                    {
+                        point.PrimaryValue = (float)cup.TotalDrinkSeconds;
+                        point.SecondaryValue = (float)cup.Id;
+                    }
+                }
+            };
 
             await Shell.Current.GoToAsync(nameof(DetailsPage), true, new Dictionary<string, object>
             {
-                {"Cups", cups }
+                {"Cups", cups },
+                {"TotalDrinkSecondsSeries", totalDrinkSecondsSeries }
             });
         }
 

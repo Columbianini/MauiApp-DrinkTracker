@@ -22,6 +22,8 @@ namespace DrinkDrink.Model
                 finishedDrinkTime = value;
             }
         }
+
+        public double TotalDrinkSeconds { get; set; }
         public Cup()
         {
             isFinished = false;
